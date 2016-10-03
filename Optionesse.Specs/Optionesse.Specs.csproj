@@ -75,7 +75,47 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataRetrieval\RequestData\CaptureDataCallResults.feature.cs">
+    <Compile Include="ApplyStudies\CreateStudyTrigger\CreateTrigger.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateTrigger.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\CreateStudyTrigger\TriggerNotification.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TriggerNotification.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\EvaluateStudyRules\ApplyStudy.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplyStudy.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\EvaluateStudyRules\LoadActiveStudies.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadActiveStudies.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\InitializeStudies\CreateActiveStudy.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateActiveStudy.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\InitializeStudies\EvaluateStudyTriggerConditions.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluateStudyTriggerConditions.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\InitializeStudies\LoadStudyDefinitions.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadStudyDefinitions.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStudies\EvaluateStudyRules\LoadStudyRules.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadStudyRules.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DataRetrieval\ParseAndStoreResults\CaptureDataCallResults.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CaptureDataCallResults.feature</DependentUpon>
@@ -91,11 +131,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDataServiceCallsSteps.feature</DependentUpon>
     </Compile>
+    <Compile Include="DefineStudies\CreateStudyDefinition.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateStudyDefinition.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DefineStudies\EditStudyDefinition.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditStudyDefinition.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="DataRetrieval\RequestData\CaptureDataCallResults.feature">
+    <None Include="ApplyStudies\CreateStudyTrigger\CreateTrigger.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateTrigger.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\CreateStudyTrigger\TriggerNotification.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TriggerNotification.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\EvaluateStudyRules\ApplyStudy.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ApplyStudy.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\EvaluateStudyRules\LoadActiveStudies.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoadActiveStudies.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\InitializeStudies\CreateActiveStudy.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateActiveStudy.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\InitializeStudies\EvaluateStudyTriggerConditions.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EvaluateStudyTriggerConditions.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\InitializeStudies\LoadStudyDefinitions.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoadStudyDefinitions.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ApplyStudies\EvaluateStudyRules\LoadStudyRules.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoadStudyRules.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DataRetrieval\ParseAndStoreResults\CaptureDataCallResults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CaptureDataCallResults.feature.cs</LastGenOutput>
     </None>
@@ -110,6 +192,14 @@
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="DefineStudies\CreateStudyDefinition.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateStudyDefinition.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DefineStudies\EditStudyDefinition.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EditStudyDefinition.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
     <None Include="SpecRunTestProfile.xsd">
@@ -120,13 +210,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ApplyStudies\CreateStudyReport\" />
-    <Folder Include="ApplyStudies\CreateStudyTrigger\" />
-    <Folder Include="ApplyStudies\EvaluateStudyRules\" />
-    <Folder Include="ApplyStudies\IdentifyStudyStartConditions\" />
-    <Folder Include="ApplyStudies\SaveStudyDetails\" />
     <Folder Include="DataRetrieval\LoadConfiguration\" />
-    <Folder Include="DataRetrieval\ParseAndStoreResults\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Optionesse.Configuration\Optionesse.Configuration.csproj">
