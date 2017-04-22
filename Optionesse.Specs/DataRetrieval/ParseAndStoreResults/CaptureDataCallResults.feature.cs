@@ -17,8 +17,8 @@ namespace Optionesse.DataRetrieval.Specs.DataRetrieval.ParseAndStoreResults
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("CaptureDataCallResults", Description="\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-        "f two numbers", SourceFile="DataRetrieval\\ParseAndStoreResults\\CaptureDataCallResults.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("CaptureDataCallResults", Description="\tI want to capture the results of a call to the web service\r\n\tSo that I can recor" +
+        "d daily trade data for analysis", SourceFile="DataRetrieval\\ParseAndStoreResults\\CaptureDataCallResults.feature", SourceLine=0)]
     public partial class CaptureDataCallResultsFeature
     {
         
@@ -31,8 +31,8 @@ namespace Optionesse.DataRetrieval.Specs.DataRetrieval.ParseAndStoreResults
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CaptureDataCallResults", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CaptureDataCallResults", "\tI want to capture the results of a call to the web service\r\n\tSo that I can recor" +
+                    "d daily trade data for analysis", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,22 +63,38 @@ namespace Optionesse.DataRetrieval.Specs.DataRetrieval.ParseAndStoreResults
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add two numbers", new string[] {
-                "mytag"}, SourceLine=6)]
-        public virtual void AddTwoNumbers()
+        [TechTalk.SpecRun.ScenarioAttribute("Capture Data Call Results", SourceLine=4)]
+        public virtual void CaptureDataCallResults()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Capture Data Call Results", ((string[])(null)));
+#line 5
 this.ScenarioSetup(scenarioInfo);
+#line 6
+ testRunner.Given("I have a properly formatted call to the web service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+ testRunner.When("I execute the call", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
- testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("I should get a properly-formatted result", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Handle Web Service Outage", SourceLine=9)]
+        public virtual void HandleWebServiceOutage()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Handle Web Service Outage", ((string[])(null)));
 #line 10
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 11
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a properly formatted call to the web service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 12
+  testRunner.But("The web service is unavailable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "But ");
+#line 13
+ testRunner.When("I execute the call", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 14
+ testRunner.Then("I should get an empty result", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 15
+  testRunner.And("the result status should indicate a service outage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

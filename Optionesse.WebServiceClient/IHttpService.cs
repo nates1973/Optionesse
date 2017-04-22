@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Optionesse.WebServiceClient
 {
     public interface IHttpService
     {
         Uri BaseAddress { get; }
-        HttpResponseMessage Get(string uri);
+        Task<HttpResponseMessage> Get(string uri);
     }
 }

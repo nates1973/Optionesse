@@ -52,6 +52,7 @@
     <Compile Include="HttpServiceWrapper.cs" />
     <Compile Include="HttpServiceFactory.cs" />
     <Compile Include="IHttpService.cs" />
+    <Compile Include="IWebServiceClient.cs" />
     <Compile Include="IWebServiceConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServiceClient.cs" />

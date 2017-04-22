@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Optionesse.WebServiceClient
 {
-    public class WebServiceClient
+    public class WebServiceClient : IWebServiceClient
     {
         public IDataRetrievalConfiguration Configuration { get; private set; }
         public IWebServiceConnection Connection { get; private set; }
         public IHttpService Service { get; private set; }
+        public string Query { get; set; }
 
         public WebServiceClient(IDataRetrievalConfiguration config, IWebServiceConnection connection, IHttpService service)
         {
@@ -34,11 +35,16 @@ namespace Optionesse.WebServiceClient
             var results = new List<DailyQuote>();
             Configuration.Securities.ForEach(async s =>
             {
-                var query = $"{Connection.HistoryEndpoint}?key={Connection.Key}&symbols={s}&type=daily&startDate={Configuration.StartDate.ToString("yyyyMMdd")}&endDate={Configuration.EndDate.ToString("yyyyMMdd")}";
-                var response = Service.Get(query);
+                GetHistoryQuery(s);
+                var response = await Service.Get(Query);
                 await ParseServiceResults(results, response, true);
             });
             return results;
+        }
+
+        private void GetHistoryQuery(string s)
+        {
+            Query = $"{Connection.HistoryEndpoint}?key={Connection.Key}&symbols={s}&type=daily&startDate={Configuration.StartDate.ToString("yyyyMMdd")}&endDate={Configuration.EndDate.ToString("yyyyMMdd")}";
         }
 
         private async static Task ParseServiceResults(List<DailyQuote> results, HttpResponseMessage response, bool historicalData = false)
@@ -58,13 +64,17 @@ namespace Optionesse.WebServiceClient
             var results = new List<DailyQuote>();
             var dateToRetrieve = Utilities.GetPreviousTradingDay();
             var symbolList = string.Join(",", Configuration.Securities);
-            var query = $"{Connection.DailyEndpoint}?key={Connection.Key}&symbols={symbolList}&type=daily&startDate={dateToRetrieve.ToString("yyyyMMdd")}";
+            GetDailyQuery(dateToRetrieve, symbolList);
 
-            var response = Service.Get(query);
+            var response = await Service.Get(Query);
             await ParseServiceResults(results, response, false);
 
             return results;
         }
 
+        private void GetDailyQuery(DateTime dateToRetrieve, string symbolList)
+        {
+            Query = $"{Connection.DailyEndpoint}?key={Connection.Key}&symbols={symbolList}&type=daily&startDate={dateToRetrieve.ToString("yyyyMMdd")}";
+        }
     }
 }

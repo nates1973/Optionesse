@@ -22,5 +22,5 @@ namespace Optionesse.DomainLogic
             return today.AddDays(-1);
         }
 
-     }
+    }
 }

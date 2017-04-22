@@ -43,26 +43,26 @@ namespace Optionesse.WebServiceClient.Tests
             var symbol = "AAPL";
             var date = Utilities.GetPreviousTradingDay(testDate);
 
-            var config = WebServiceClientFixtures.GetMockConfiguration(new List<string> { symbol });
+            var config = WebServiceClientFixtures.GetMockedConfiguration(new List<string> { symbol });
             config.StartDate = testDate;
             var connection = new BarchartOnDemandWebServiceConnection();
-            var client = (new HttpServiceFactory(config, connection)).GetDailyService();
+            var client = (new HttpServiceFactory(config, connection)).GetService();
 
             var sut = new WebServiceClient(config, connection, client);
 
             var data = sut.GetResults();
             Assert.IsNotNull(data);
-            Assert.IsFalse(data.Status != TaskStatus.Faulted, "Error in the service call.");
+            Assert.IsTrue(data.Status != TaskStatus.Faulted, "Error in the service call.");
             //TODO: Write More for this test?
         }
 
         [TestMethod]
         public async Task GetResults_SingleDay_ForSingleSecurity_ShouldReturnCollectionWithOneRecord()
         {
-            var mockConfig = WebServiceClientFixtures.GetMockConfiguration(new List<string> { "AAPL" });
-            var mockConnection = WebServiceClientFixtures.GetMockConnection();
-            var mockService = WebServiceClientFixtures.GetMockService();
-            mockConfig.IsHistory = true;
+            var mockConfig = WebServiceClientFixtures.GetMockedConfiguration(new List<string> { "AAPL" });
+            var mockConnection = WebServiceClientFixtures.GetMockedConnection();
+            var mockService = WebServiceClientFixtures.GetMockService(false);
+            mockConfig.IsHistory = false;
 
             var sut = new WebServiceClient(mockConfig, mockConnection, mockService);
             var results = await sut.GetResults();
@@ -72,7 +72,7 @@ namespace Optionesse.WebServiceClient.Tests
             var firstRecord = results.First();
             Assert.AreEqual("AAPL", firstRecord.Symbol, "Results found for unexpected security");
             var expectedTradingDate = Utilities.GetPreviousTradingDay(DateTime.Parse("7/23/2016"));
-            Assert.AreEqual(expectedTradingDate, firstRecord.TradingDay, "Results found for unexpected trading day");
+            Assert.AreEqual(expectedTradingDate.Date, firstRecord.TradingDay.Date, "Results found for unexpected trading day");
         }
 
         [TestMethod]

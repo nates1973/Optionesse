@@ -16,23 +16,18 @@ namespace Optionesse.WebServiceClient
             _isHistoryConnection = config.IsHistory;
         }
 
-        public IHttpService GetDailyService()
+        public IHttpService GetService()
         {
-            return InitializeService();
-        }
-
-        private IHttpService InitializeService()
-        {
-            if (_connection == null || _connection.DailyEndpoint == null || _connection.Key == null)
+            if (_connection == null || _connection.DailyEndpoint == null 
+                || _connection.HistoryEndpoint == null || _connection.Key == null)
                 throw new Exception("Invalid connection object");
 
             var client = new HttpClient();
-            client.BaseAddress = _connection.DailyEndpoint;
+            client.BaseAddress = _isHistoryConnection ? _connection.HistoryEndpoint : _connection.DailyEndpoint;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             return new HttpServiceWrapper(client);
         }
-
 
     }
 }

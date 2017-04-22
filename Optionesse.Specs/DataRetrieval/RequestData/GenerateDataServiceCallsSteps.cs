@@ -7,23 +7,18 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
+using System.Text;
+using Optionesse.Testing.Utilities;
+using Optionesse.DataRetrieval.Specs.Contexts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Optionesse.DataRetrieval.Specs.RequestData
 {
-    public class DataServiceCallContext
-    {
-        public Table Parameters { get; set; }
-        public IDataRetrievalConfiguration Configuration { get { return WebServiceClientFixtures.GetMockConfiguration(null); } }
-        public Mock<IHttpService> Service { get; set; }
-        public WebServiceClient.WebServiceClient Client { get; set; }
-        public List<DailyQuote> Results { get; set; }
-    }
-
-
     [Binding]
     public class GenerateDataServiceCallsSteps
     {
         DataServiceCallContext _context;
+        string _expectedQuery = string.Empty;
 
         public GenerateDataServiceCallsSteps(DataServiceCallContext context)
         {
@@ -33,22 +28,19 @@ namespace Optionesse.DataRetrieval.Specs.RequestData
         [Given(@"I have entered the following symbols into the configuration")]
         public async Task GivenIHaveEnteredTheFollowingSymbolsIntoTheConfiguration(Table table)
         {
-            await SetUpFakeClient();
+            await _context.SetUpFakeClient();
             _context.Parameters = table;
-        }
-
-        private async Task SetUpFakeClient()
-        {
-            throw new NotImplementedException();
+            _expectedQuery = _context.GetExpectedQuery();
         }
 
         [Given(@"I have entered security symbol '(.*)' into the configuration")]
         public async Task GivenIHaveEnteredSecuritySymbolIntoTheConfiguration(string symbol)
         {
-            await SetUpFakeClient();
+            await _context.SetUpFakeClient();
             var parameters = new Table(new string[] { "symbol" });
             parameters.AddRow(new string[] { symbol });
             _context.Parameters = parameters;
+            _expectedQuery = _context.GetExpectedQuery(symbol);
         }
 
         [When(@"I run the data retrieval process")]
@@ -61,18 +53,20 @@ namespace Optionesse.DataRetrieval.Specs.RequestData
         public void ThenAProperlyFormattedDataCallIsGeneratedForThoseParameters()
         {
             _context.Service.Verify();
+            _context.Configuration.Verify();
+           // Assert.AreEqual(_expectedQuery, _context.Client.Query);
         }
 
         [Given(@"I have configured previous day data mode")]
         public void GivenIHaveConfiguredPreviousDayDataMode()
         {
-            ScenarioContext.Current.Pending();
+            _context.Configuration.Object.IsHistory = false;
         }
 
         [Given(@"I have configured historical data mode")]
         public void GivenIHaveConfiguredHistoricalDataMode()
         {
-            ScenarioContext.Current.Pending();
+            _context.Configuration.Object.IsHistory = true;
         }
 
     }

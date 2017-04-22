@@ -15,11 +15,11 @@ namespace Optionesse.WebServiceClient.Tests
         public void CreateClient_FromInjectedDependencies_ShouldCreateHttpClientObject()
         {
             var expectedUri = new Uri("http://www.fake.com/getResults.json");
-            var mockConfig = WebServiceClientFixtures.GetMockConfiguration(new List<string> { "AAPL" });
-            var mockConnection = WebServiceClientFixtures.GetMockConnection();
+            var mockConfig = WebServiceClientFixtures.GetMockedConfiguration(new List<string> { "AAPL" });
+            var mockConnection = WebServiceClientFixtures.GetMockedConnection();
             var sut = new HttpServiceFactory(mockConfig, mockConnection);
 
-            var client = sut.GetDailyService();
+            var client = sut.GetService();
             Assert.IsNotNull(client);
             Assert.IsInstanceOfType(client, typeof(IHttpService));
             Assert.AreEqual(expectedUri, client.BaseAddress);
@@ -32,7 +32,7 @@ namespace Optionesse.WebServiceClient.Tests
             var connection = new BarchartOnDemandWebServiceConnection();
             var sut = new HttpServiceFactory(configuration, connection);
 
-            var client = sut.GetDailyService();
+            var client = sut.GetService();
 
             Assert.IsNotNull(client);
             Assert.IsInstanceOfType(client, typeof(IHttpService));

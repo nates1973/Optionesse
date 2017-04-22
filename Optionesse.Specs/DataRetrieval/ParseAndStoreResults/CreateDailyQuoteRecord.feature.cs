@@ -10,15 +10,16 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Optionesse.DataRetrieval.Specs.DataRetrieval.RequestData
+namespace Optionesse.DataRetrieval.Specs.DataRetrieval.ParseAndStoreResults
 {
     using TechTalk.SpecFlow;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("CreateDailyQuoteRecord", Description="\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-        "f two numbers", SourceFile="DataRetrieval\\RequestData\\CreateDailyQuoteRecord.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("CreateDailyQuoteRecord", Description="\tI want to turn raw data from the data service into a record of a daily quote\r\n\tS" +
+        "o that the data can be recorded and analyzed to identify potential trading oppor" +
+        "tunities", SourceFile="DataRetrieval\\ParseAndStoreResults\\CreateDailyQuoteRecord.feature", SourceLine=0)]
     public partial class CreateDailyQuoteRecordFeature
     {
         
@@ -31,8 +32,9 @@ namespace Optionesse.DataRetrieval.Specs.DataRetrieval.RequestData
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateDailyQuoteRecord", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateDailyQuoteRecord", "\tI want to turn raw data from the data service into a record of a daily quote\r\n\tS" +
+                    "o that the data can be recorded and analyzed to identify potential trading oppor" +
+                    "tunities", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,22 +65,32 @@ namespace Optionesse.DataRetrieval.Specs.DataRetrieval.RequestData
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add two numbers", new string[] {
-                "mytag"}, SourceLine=6)]
-        public virtual void AddTwoNumbers()
+        [TechTalk.SpecRun.ScenarioAttribute("Create Daily Quote From Raw Data", SourceLine=4)]
+        public virtual void CreateDailyQuoteFromRawData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Daily Quote From Raw Data", ((string[])(null)));
+#line 5
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Handle Results with No Data", SourceLine=6)]
+        public virtual void HandleResultsWithNoData()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Handle Results with No Data", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Raw Data with Multiple Records Should Generate One Daily Quote Per Raw Record", SourceLine=8)]
+        public virtual void RawDataWithMultipleRecordsShouldGenerateOneDailyQuotePerRawRecord()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Raw Data with Multiple Records Should Generate One Daily Quote Per Raw Record", ((string[])(null)));
 #line 9
- testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }

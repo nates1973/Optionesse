@@ -18,9 +18,10 @@ namespace Optionesse.WebServiceClient
             _httpClientForservice = client;
         }
 
-        public HttpResponseMessage Get(string query)
+        public async Task<HttpResponseMessage> Get(string query)
         {
-            return _httpClientForservice.GetAsync(query).Result ?? new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.NotFound };
+            var result = await _httpClientForservice.GetAsync(query);
+            return result ?? new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.NotFound };
         }
     }
 

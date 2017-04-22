@@ -115,12 +115,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoadStudyRules.feature</DependentUpon>
     </Compile>
+    <Compile Include="Contexts\DataServiceCallContext.cs" />
+    <Compile Include="DataRetrieval\LoadConfiguration\LoadConfiguration.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadConfiguration.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DataRetrieval\LoadConfiguration\LoadConfigurationSteps.cs" />
     <Compile Include="DataRetrieval\ParseAndStoreResults\CaptureDataCallResults.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CaptureDataCallResults.feature</DependentUpon>
     </Compile>
-    <Compile Include="DataRetrieval\RequestData\CreateDailyQuoteRecord.feature.cs">
+    <Compile Include="DataRetrieval\ParseAndStoreResults\CaptureDataCallResultsSteps.cs" />
+    <Compile Include="DataRetrieval\ParseAndStoreResults\CreateDailyQuoteRecord.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateDailyQuoteRecord.feature</DependentUpon>
@@ -177,11 +185,15 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoadStudyRules.feature.cs</LastGenOutput>
     </None>
+    <None Include="DataRetrieval\LoadConfiguration\LoadConfiguration.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoadConfiguration.feature.cs</LastGenOutput>
+    </None>
     <None Include="DataRetrieval\ParseAndStoreResults\CaptureDataCallResults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CaptureDataCallResults.feature.cs</LastGenOutput>
     </None>
-    <None Include="DataRetrieval\RequestData\CreateDailyQuoteRecord.feature">
+    <None Include="DataRetrieval\ParseAndStoreResults\CreateDailyQuoteRecord.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateDailyQuoteRecord.feature.cs</LastGenOutput>
     </None>
@@ -209,9 +221,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataRetrieval\LoadConfiguration\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Optionesse.Configuration\Optionesse.Configuration.csproj">
       <Project>{a775a1d9-8b04-4043-aab6-fb3c7f5f62b4}</Project>

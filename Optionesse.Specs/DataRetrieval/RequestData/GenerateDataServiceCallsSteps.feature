@@ -21,5 +21,4 @@ Scenario: Generate Data Service Call For Security History
 	When I run the data retrieval process
 	Then a properly formatted data call is generated for those parameters
 
-Scenario: Data Service Unavailable
 
